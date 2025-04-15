@@ -1,5 +1,12 @@
 # 🧱 Mockblock
 
+[![Language](https://img.shields.io/badge/Rust-🦀%20Rust-orange?style=flat-square&logo=rust)](https://www.rust-lang.org)
+[![License](https://img.shields.io/github/license/akotsampaseris/mockblock?style=flat-square)](./LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/akotsampaseris/mockblock?style=flat-square)](https://github.com/akotsampaseris/mockblock/stargazers)
+[![Build](https://img.shields.io/github/actions/workflow/status/akotsampaseris/mockblock/ci.yml?label=build&style=flat-square)](https://github.com/akotsampaseris/mockblock/actions)
+[![Rust Version](https://img.shields.io/badge/Rust-1.75%2B-blue?style=flat-square)](https://blog.rust-lang.org)
+[![Made with ❤️](https://img.shields.io/badge/made%20with-%E2%9D%A4-red?style=flat-square)](https://github.com/akotsampaseris)
+
 > A lightweight Ethereum-like mock blockchain simulator for local development, testing, and tooling — no node, no sync, just blocks.
 
 ---
