@@ -2,7 +2,7 @@ use ethereum_types::{Address, H256, U256};
 
 
 #[derive(Clone, Debug)]
-pub struct WalletState {
+pub struct AccountState {
     pub balance: U256, // Balance of wallet in wei
     pub nonce: u64, // Wallet's current nonce
 }
