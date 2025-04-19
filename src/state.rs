@@ -2,12 +2,13 @@ use std::collections::HashMap;
 use ethereum_types::{Address, U256};
 use crate::types::{Transaction, AccountState};
 
+
 #[derive(Clone, Debug)]
-pub struct ChainState {
+pub struct State {
     accounts: HashMap<Address, AccountState>,
 }
 
-impl ChainState {
+impl State {
     // Creates empty state
     pub fn new() -> Self {
         Self {
@@ -31,28 +32,28 @@ impl ChainState {
     }
 
     // Applies a transaction to the chain state
-    pub fn apply_transaction(&mut self, trx: &Transaction) -> Result<(), String> {
-        let sender = self.accounts.get_mut(&trx.from)
+    pub fn apply_transaction(&mut self, tx: Transaction) -> Result<(), String> {
+        let sender = self.accounts.get_mut(&tx.from)
             .ok_or("Sender not found")?;
 
-        if sender.nonce != trx.nonce {
+        if sender.nonce != tx.nonce {
             return Err("Invanlid nonce".into());
         }
 
-        if sender.balance < trx.value {
+        if sender.balance < tx.value {
             return Err("Insufficient balance".into());
         }
 
-        sender.balance -= trx.value; // Remove TRX value from sender's balance
+        sender.balance -= tx.value; // Remove tx value from sender's balance
         sender.nonce += 1; // Increment sender's nonce
 
         // Find or create receiver's account state
-        let receiver = self.accounts.entry(trx.to).or_insert(AccountState {
+        let receiver = self.accounts.entry(tx.to).or_insert(AccountState {
             balance: U256::zero(),
             nonce: 0
         });
 
-        receiver.balance += trx.value; // Add TRX value to receiver's balance
+        receiver.balance += tx.value; // Add tx value to receiver's balance
 
         Ok(())
     }

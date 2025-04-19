@@ -17,8 +17,12 @@ impl Mempool {
     }
 
     /// Adds a transaction to the mempool
-    pub fn add_transaction(&mut self, trx: Transaction) {
-        self.queue.push_back(trx);
+    pub fn add(&mut self, tx: Transaction) {
+        self.queue.push_back(tx);
+    }
+
+    pub fn add_to_front(&mut self, tx: Transaction) {
+        self.queue.push_front(tx);
     }
 
     /// Returns the number of transactions in the mempool
